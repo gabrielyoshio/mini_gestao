@@ -6,7 +6,12 @@ $sucesso = '';
 
 if(isset($_POST['email'], $_POST['senha'])){
     $email = $_POST['email'];
+<<<<<<< HEAD
     $senha = hash('sha256', $_POST['senha']); // SHA-256
+=======
+    $senha = hash('sha256', $_POST['senha']); 
+
+>>>>>>> cf278d5 (atualizacao)
 
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email=? AND senha=?");
     $stmt->bind_param("ss", $email, $senha);

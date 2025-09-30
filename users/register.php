@@ -10,7 +10,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email = $_POST['email'];
     $senha = hash('sha256', $_POST['senha']);
 
+<<<<<<< HEAD
     // Verifica se já existe usuário
+=======
+>>>>>>> cf278d5 (atualizacao)
     $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email=?");
     $stmt->bind_param("s",$email);
     $stmt->execute();

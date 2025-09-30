@@ -2,10 +2,15 @@
 include '../config.php';
 
 if(isset($_POST['produtos']) && is_array($_POST['produtos'])){
+<<<<<<< HEAD
     // Pegando o usuário logado (por enquanto fixo em 1, depois pode usar $_SESSION)
     $usuario_id = 1; 
     
     // Verifica se já existe uma cesta para o usuário
+=======
+    $usuario_id = 1; 
+    
+>>>>>>> cf278d5 (atualizacao)
     $checkCesta = $conn->prepare("SELECT id FROM cestas WHERE usuario_id=?");
     $checkCesta->bind_param("i", $usuario_id);
     $checkCesta->execute();
@@ -15,7 +20,10 @@ if(isset($_POST['produtos']) && is_array($_POST['produtos'])){
         $cesta = $resCesta->fetch_assoc();
         $cesta_id = $cesta['id'];
     } else {
+<<<<<<< HEAD
         // Se não existir, cria uma nova cesta
+=======
+>>>>>>> cf278d5 (atualizacao)
         $stmtCesta = $conn->prepare("INSERT INTO cestas (usuario_id) VALUES (?)");
         $stmtCesta->bind_param("i", $usuario_id);
         $stmtCesta->execute();
@@ -23,7 +31,10 @@ if(isset($_POST['produtos']) && is_array($_POST['produtos'])){
     }
 
     foreach($_POST['produtos'] as $produto_id){
+<<<<<<< HEAD
         // Verifica se o produto já está na cesta
+=======
+>>>>>>> cf278d5 (atualizacao)
         $check = $conn->prepare("SELECT * FROM cestas_itens WHERE cesta_id=? AND produto_id=?");
         $check->bind_param("ii", $cesta_id, $produto_id);
         $check->execute();
