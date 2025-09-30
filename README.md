@@ -6,6 +6,12 @@ Sistema web para cadastrar usuários, fornecedores, produtos e criar cestas de c
 
 ## 🚀 Autores
 
+<<<<<<< HEAD
+- Gabriel Yoshio Munuera Hasegawa- RA 60006093  
+=======
+<<<<<<< HEAD
+- Gabriel Yoshio - RA 60006093  
+=======
 - Gabriel Yoshio Munuera Hasegawa- RA 60006093  
 - Kaique Fantin Gaiarim - RA 60003260  
 - Luis Felipe - RA 60004109  
