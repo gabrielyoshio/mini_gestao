@@ -1,10 +1,6 @@
 <?php
 include '../config.php';
 
-<<<<<<< HEAD
-// Seleciona todos os itens da cesta
-=======
->>>>>>> cf278d5 (atualizacao)
 $res = $conn->query("
     SELECT ci.id AS cesta_id, p.nome, p.preco 
     FROM cestas_itens ci

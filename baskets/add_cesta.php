@@ -1,52 +1,32 @@
 <?php
 include '../config.php';
 
-if(isset($_POST['produtos']) && is_array($_POST['produtos'])){
-<<<<<<< HEAD
-    // Pegando o usuário logado (por enquanto fixo em 1, depois pode usar $_SESSION)
-    $usuario_id = 1; 
-    
-    // Verifica se já existe uma cesta para o usuário
-=======
-    $usuario_id = 1; 
-    
->>>>>>> cf278d5 (atualizacao)
-    $checkCesta = $conn->prepare("SELECT id FROM cestas WHERE usuario_id=?");
-    $checkCesta->bind_param("i", $usuario_id);
-    $checkCesta->execute();
-    $resCesta = $checkCesta->get_result();
-    
-    if($resCesta->num_rows > 0){
-        $cesta = $resCesta->fetch_assoc();
-        $cesta_id = $cesta['id'];
-    } else {
-<<<<<<< HEAD
-        // Se não existir, cria uma nova cesta
-=======
->>>>>>> cf278d5 (atualizacao)
-        $stmtCesta = $conn->prepare("INSERT INTO cestas (usuario_id) VALUES (?)");
-        $stmtCesta->bind_param("i", $usuario_id);
-        $stmtCesta->execute();
-        $cesta_id = $stmtCesta->insert_id;
+if (isset($_POST['produtos']) && is_array($_POST['produtos'])) {
+    $usuario_id = 1;
+    $stmt = $conn->prepare("INSERT INTO cestas (usuario_id, criado_em) VALUES (?, NOW())");
+    $stmt->bind_param("i", $usuario_id);
+    if (!$stmt->execute()) {
+        echo "error: não conseguiu criar a cesta - " . $stmt->error;
+        exit;
+    }
+    $cesta_id = $conn->insert_id;
+
+    $stmt_item = $conn->prepare("INSERT INTO cestas_itens (cesta_id, produto_id) VALUES (?, ?)");
+    if (!$stmt_item) {
+        echo "error: prepare itens - " . $conn->error;
+        exit;
     }
 
-    foreach($_POST['produtos'] as $produto_id){
-<<<<<<< HEAD
-        // Verifica se o produto já está na cesta
-=======
->>>>>>> cf278d5 (atualizacao)
-        $check = $conn->prepare("SELECT * FROM cestas_itens WHERE cesta_id=? AND produto_id=?");
-        $check->bind_param("ii", $cesta_id, $produto_id);
-        $check->execute();
-        $result = $check->get_result();
-
-        if($result->num_rows == 0){
-            $stmt = $conn->prepare("INSERT INTO cestas_itens (cesta_id, produto_id) VALUES (?, ?)");
-            $stmt->bind_param("ii", $cesta_id, $produto_id);
-            $stmt->execute();
+    foreach ($_POST['produtos'] as $produto_id) {
+        $produto_id = intval($produto_id);
+        $stmt_item->bind_param("ii", $cesta_id, $produto_id);
+        if (!$stmt_item->execute()) {
+            echo "error: item falhou - " . $stmt_item->error;
+            exit;
         }
     }
+
     echo "success";
 } else {
-    echo "error";
+    echo "error: nenhum produto selecionado";
 }

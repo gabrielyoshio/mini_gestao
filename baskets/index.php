@@ -69,10 +69,6 @@ $(document).ready(function(){
     fetchProdutos();
     fetchCesta();
 
-<<<<<<< HEAD
-    // Adicionar produtos à cesta
-=======
->>>>>>> cf278d5 (atualizacao)
     $('#formCesta').on('submit', function(e){
         e.preventDefault();
 
@@ -102,10 +98,6 @@ $(document).ready(function(){
         });
     });
 
-<<<<<<< HEAD
-    // Remover produto da cesta
-=======
->>>>>>> cf278d5 (atualizacao)
     $(document).on('click', '.removeBtn', function(){
         let id = $(this).data('id');
         if(confirm('Deseja realmente remover este produto da cesta?')){

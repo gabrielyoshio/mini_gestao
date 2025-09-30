@@ -60,10 +60,6 @@ function fetchFornecedores(){
 $(document).ready(function(){
     fetchFornecedores();
 
-<<<<<<< HEAD
-    // Função para criar fornecedor
-=======
->>>>>>> cf278d5 (atualizacao)
     $('#formFornecedor').on('submit', function(e){
         e.preventDefault();
         $.ajax({
@@ -81,10 +77,6 @@ $(document).ready(function(){
         });
     });
 
-<<<<<<< HEAD
-    // Função para deletar fornecedor
-=======
->>>>>>> cf278d5 (atualizacao)
     $(document).on('click', '.deleteBtn', function(){
         if(confirm('Deseja realmente excluir este fornecedor?')){
             let id = $(this).data('id');
@@ -103,33 +95,18 @@ $(document).ready(function(){
         }
     });
 
-<<<<<<< HEAD
-    // Função para editar fornecedor
-=======
->>>>>>> cf278d5 (atualizacao)
     $(document).on('click', '.editBtn', function(){
         let id = $(this).data('id');
         let nome = $(this).data('nome');
         let email = $(this).data('email');
         let telefone = $(this).data('telefone');
 
-<<<<<<< HEAD
-        // Preenche o formulário com os dados existentes
-=======
->>>>>>> cf278d5 (atualizacao)
         $('#formFornecedor input[name="nome"]').val(nome);
         $('#formFornecedor input[name="email"]').val(email);
         $('#formFornecedor input[name="telefone"]').val(telefone);
 
-<<<<<<< HEAD
-        // Muda botão para atualizar
         $('#formFornecedor button[type="submit"]').text('Atualizar').removeClass('btn-success').addClass('btn-primary');
 
-        // Altera ação do formulário para atualizar
-=======
-        $('#formFornecedor button[type="submit"]').text('Atualizar').removeClass('btn-success').addClass('btn-primary');
-
->>>>>>> cf278d5 (atualizacao)
         $('#formFornecedor').off('submit').on('submit', function(e){
             e.preventDefault();
             let novoNome = $('#formFornecedor input[name="nome"]').val();
@@ -144,15 +121,7 @@ $(document).ready(function(){
                     if(resp.trim() === 'success'){
                         $('#formFornecedor')[0].reset();
                         fetchFornecedores();
-<<<<<<< HEAD
-                        // Volta o botão para adicionar
                         $('#formFornecedor button[type="submit"]').text('Adicionar').removeClass('btn-primary').addClass('btn-success');
-
-                        // Restaura função criar
-=======
-                        $('#formFornecedor button[type="submit"]').text('Adicionar').removeClass('btn-primary').addClass('btn-success');
-
->>>>>>> cf278d5 (atualizacao)
                         $('#formFornecedor').off('submit').on('submit', function(e){
                             e.preventDefault();
                             $.ajax({
