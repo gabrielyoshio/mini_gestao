@@ -22,5 +22,3 @@ Sistema web para cadastrar usuários, fornecedores, produtos e criar cestas de c
 - HTML5, CSS3, JavaScript  
 - AJAX para atualização dinâmica  
 - Bootstrap/Tailwind para elementos visuais 
-
-//teste 
